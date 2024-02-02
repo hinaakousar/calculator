@@ -1,107 +1,106 @@
 
+user_data = {}
+
+def add_data( name, email, age, phone):
+    if name not in user_data:
+        user_data[name] = {'Email': email, 'Age': age, 'Phone': phone}
+        print(f"{name}'s information added successfully.")
+    else:
+        print(f"{name} already exists in the database. Use update_data to modify.")
+
+def search_data( name):
+    if name in user_data:
+     print(f"Name: {name}")
+    for key, value in user_data[name].items():
+        print(f"{key}: {value}")
+    else:
+     print(f"{name} not found in the database.")
+
+def remove_data(name):
+ if name in user_data:
+    del user_data[name]
+    print(f"{name}'s information removed successfully.")
+ else:
+    print(f"{name} not found in the database.")
+
+def print_data(name):
+ if not user_data:
+    print("Database is empty.")
+ else:
+    for name, info in user_data.items():
+        print(f"\nName: {name}")
+        for key, value in info.items():
+            print(f"{key}: {value}")
+
+def update_data(name, email=None, age=None, phone=None):
+ if name in user_data:
+    if email:
+        user_data[name]['Email'] = email
+    if age:
+        user_data[name]['Age'] = age
+    if phone:
+        user_data[name]['Phone'] = phone
+    print(f"{name}'s information updated successfully.")
+ else:
+    print(f"{name} not found in the database. Use add_data to add new entry.")
+
+
+# app =hinaApp()
+
+while True:
+    print("\nMenu:")
+    print("1. Add Data")
+    print("2. Search Data")
+    print("3. Remove Data")
+    print("4. Print Data")
+    print("5. Update Data")
+    print("6. Exit")
+
+    choice = input("Enter your choice (1-6): ")
+
+
+    if choice == "1":
+        name=input("Enter name:")
+        email=input("Enter email:")
+        age=input("Enter age:")
+        phone=input("Enter phone number:")
+        add_data(name,email,age,phone)
+
+    elif choice=="2":
+        name=input("Enter name to search:")
+        search_data(name)
+    elif choice=="3":
+        name=input("Enter name to search:")
+        remove_data(name)
+
+    elif choice=="4":
+        print_data()
+
+    elif choice=="5":
+        name = input("Enter name to update")
+        email = input("Enter new email to update")
+        age = input("Enter new age")
+        phone = input("Enter new phone number")
+
+        update_data(name,email,age,phone)
+
+    elif choice=="6":
+
+        print("Exit the program.")
+        break
+
+    else:
+        print("Invalid choice.")
+
+
+
+
+
+
+
+
     
-    user_data = {}
-
-    def add_data( name, email, age, phone):
-        if name not in user_data:
-            user_data[name] = {'Email': email, 'Age': age, 'Phone': phone}
-            print(f"{name}'s information added successfully.")
-        else:
-            print(f"{name} already exists in the database. Use update_data to modify.")
-
-    def search_data( name):
-        if name in user_data:
-            print(f"Name: {name}")
-            for key, value in user_data[name].items():
-                print(f"{key}: {value}")
-        else:
-            print(f"{name} not found in the database.")
-
-    def remove_data(name):
-        if name in user_data:
-            del user_data[name]
-            print(f"{name}'s information removed successfully.")
-        else:
-            print(f"{name} not found in the database.")
-
-    def print_data(name):
-        if not user_data:
-            print("Database is empty.")
-        else:
-            for name, info in user_data.items():
-                print(f"\nName: {name}")
-                for key, value in info.items():
-                    print(f"{key}: {value}")
-
-    def update_data(name, email=None, age=None, phone=None):
-        if name in user_data:
-            if email:
-                user_data[name]['Email'] = email
-            if age:
-                user_data[name]['Age'] = age
-            if phone:
-                user_data[name]['Phone'] = phone
-            print(f"{name}'s information updated successfully.")
-        else:
-            print(f"{name} not found in the database. Use add_data to add new entry.")
-
-
-    app =hinaApp()
-
-    while True:
-        print("\nMenu:")
-        print("1. Add Data")
-        print("2. Search Data")
-        print("3. Remove Data")
-        print("4. Print Data")
-        print("5. Update Data")
-        print("6. Exit")
-
-        choice = input("Enter your choice (1-6): ")
-
-
-        if choice == "1":
-            name=input("Enter name:")
-            email=input("Enter email:")
-            age=input("Enter age:")
-            phone=input("Enter phone number:")
-            app.add_data(name,email,age,phone)
-
-        elif choice=="2":
-            name=input("Enter name to search:")
-            app.search_data(name)
-        elif choice=="3":
-             name=input("Enter name to search:")
-             app.remove(name)
-
-        elif choice=="4":
-              app.print_data()
-
-        elif choice=="5":
-            name = input("Enter name to update")
-            email = input("Enter new email to update")
-            age = input("Enter new age")
-            phone = input("Enter new phone number")
-
-            app.update_data(name,email,age,phone)
-
-        elif choice=="6":
-
-            print("Exit the program.")
-            break
-
-        else:
-            print("Invalid choice.")
 
 
 
-
-
-
-
-
-            
-
-
-        
-           
+    
